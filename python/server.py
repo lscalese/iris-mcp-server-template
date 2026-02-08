@@ -1,0 +1,34 @@
+import os
+import multiprocessing
+import uvicorn
+import iris
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP("docker-mcp", stateless_http=True)
+app = mcp.streamable_http_app()
+
+# Define a simple function called 'add' to be used with the MCP
+@mcp.tool()
+def add(a: int, b: int) -> int:
+    """Add two numbers"""
+    return iris.cls("dc.python.ObjectScript").Add(a, b)
+
+@mcp.tool()
+def iris_version():
+    """Return the IRIS Instance version"""
+    return iris.system.Version.GetVersion()
+
+if __name__ == "__main__":
+    if os.getenv("RUNNING_IN_PRODUCTION"):
+        # Production mode with multiple workers for better performance
+        uvicorn.run(
+            "server:app",  # Pass as import string
+            host="0.0.0.0",
+            port=8080,
+            workers=(multiprocessing.cpu_count() * 2) + 1,
+            timeout_keep_alive=300  # Increased for SSE connections
+        )
+    else:
+        # Development mode with a single worker for easier debugging
+        uvicorn.run("server:app", host="0.0.0.0", port=8080, reload=True)
+

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Export generator="Cache" version="25">
-  <Document name="iris-python-template.ZPM">
+  <Document name="iris-python-mcp-template.ZPM">
     <Module>
-      <Name>iris-python-template</Name>
+      <Name>iris-python-mcp-template</Name>
       <Version>3.0.10</Version>
       <Description>The simplest template to run embedded python</Description>
       <Packaging>module</Packaging>

@@ -10,5 +10,10 @@ services:
       - 55038:52773
       - 53773
       - 55030:5000
+      - 55040:8080  # Port pour le serveur MCP
     volumes:
       - ./:/home/irisowner/dev
+    command: >
+      bash -c "iris start IRIS && 
+               cd /home/irisowner/dev/python && 
+               python3 server.py"

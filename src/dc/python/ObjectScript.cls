@@ -1,11 +1,9 @@
-Class dc.python.ObjectScript
+Class dc.python.ObjectScript Extends %RegisteredObject
 {
 
-ClassMethod Test() As %Status
+ClassMethod Add(a As %Integer, b As %Integer) As %Integer
 {
-    set a=42 
-    write "It works!",!
-    return a
+    Return a + b
 }
 
 }

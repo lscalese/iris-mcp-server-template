@@ -289,3 +289,21 @@ Result:
 Feel free to use the template for your own development just by adding new py files.
 
 
+## Configure Claude Desktop
+
+Add to claude_desktop_config.json
+
+```
+{
+  "mcpServers": {
+    "mon-serveur-docker": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://localhost:55040/mcp/",
+        "--allow-http"
+      ]
+    }
+  }
+}
+```
