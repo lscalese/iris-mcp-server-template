@@ -9,11 +9,6 @@ ARG TESTS=0
 ARG MODULE="iris-python-template"
 ARG NAMESPACE="USER"
 
-# Install native Python3
-#USER root
-#RUN apt-get update && apt-get install -y python3 && apt-get clean && rm -rf /var/lib/apt/lists/*
-#USER irisowner
-
 # create Python env
 ## Embedded Python environment
 ENV IRISNAMESPACE "IRISAPP"

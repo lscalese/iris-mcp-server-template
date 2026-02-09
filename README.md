@@ -1,5 +1,5 @@
-## iris-embedded-python-template
-This is a template to work with Embedded Python in InterSystems IRIS
+## iris-mcp-server-template
+This is a template to work with Embedded Python in InterSystems IRIS and MCP server.
 It demonstrates how to call python libs from ObjectScript in dc.python.test class.
 And it demonstrates how to deal with IRIS from python scripts - python/irisapp.py
 
@@ -25,19 +25,12 @@ And the main benefit is that you can use all the power of Python libraries and f
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
 
-## Installation ZPM
-Open IRIS terminal in your IRIS with installed IPM. Run the command:
-
-```objectscript
-USER>zpm "install iris-python-template"
-```
-
 ## Installation docker
 
 Clone/git pull the repo into any local directory
 
 ```bash
-$ git clone https://github.com/intersystems-community/iris-embedded-python-template.git
+$ git clone https://github.com/lscalese/iris-mcp-server-template.git
 ```
 
 Open the terminal in this directory and run:
@@ -291,9 +284,12 @@ Feel free to use the template for your own development just by adding new py fil
 
 ## Configure Claude Desktop
 
-Add to claude_desktop_config.json
+Make sure [Pyhton](https://www.python.org/) and [Node.js](https://nodejs.org/en/download) are installed.  
+Install [Claude Desktop](https://claude.com/download).  
 
-```
+Add to `%APPDATA%\claude_desktop_config.json`
+
+```json
 {
   "mcpServers": {
     "mon-serveur-docker": {
