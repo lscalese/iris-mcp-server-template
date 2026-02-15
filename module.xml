@@ -3,8 +3,8 @@
   <Document name="iris-python-mcp-template.ZPM">
     <Module>
       <Name>iris-python-mcp-template</Name>
-      <Version>3.0.11</Version>
-      <Description>The simplest template to run embedded python and MCP server</Description>
+      <Version>3.0.12</Version>
+      <Description>The simplest template to run embedded python</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="dc.python.PKG"/>
