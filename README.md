@@ -303,3 +303,17 @@ Add to `%APPDATA%\claude_desktop_config.json`
   }
 }
 ```
+
+
+```
+<CSPApplication 
+            SourcePath="/web"
+            DeployPath="${cspdir}/mcp"
+            Url="/mcp" 
+            CookiePath="/mcp/"
+            PasswordAuthEnabled="${passwordEnabled}"
+            AuthenticationMethods="32" 
+            Recurse="1"
+            MatchRoles=":%DB_${Namespace}DATA,:%DB_${Namespace}CODE"
+            DispatchClass="dc.python.disp"/>
+```

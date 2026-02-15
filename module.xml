@@ -4,12 +4,24 @@
     <Module>
       <Name>iris-python-mcp-template</Name>
       <Version>3.0.11</Version>
-      <Description>The simplest template to run embedded python</Description>
+      <Description>The simplest template to run embedded python and MCP server</Description>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="dc.python.PKG"/>
+      <Resource Name="dc.lmstudio.PKG"/>
       <FileCopy Name="python/" Target="${libdir}python/"/>
       <FileCopy Name="data/" Target="${libdir}data/${packagename}/"/>
+      <Default Name="passwordEnabled" Value="0" />
+      <CSPApplication 
+            SourcePath="/web"
+            DeployPath="${cspdir}/mcp"
+            Url="/csp/mcp" 
+            CookiePath="/csp/mcp/"
+            PasswordAuthEnabled="${passwordEnabled}"
+            AuthenticationMethods="64" 
+            Recurse="1"
+            MatchRoles=":%DB_IRISAPP_CODE:%DB_IRISAPP_DATA"
+            DispatchClass="dc.python.disp"/>
     </Module>
   </Document>
 </Export>

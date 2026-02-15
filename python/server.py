@@ -3,9 +3,12 @@ import multiprocessing
 import uvicorn
 import iris
 from mcp.server.fastmcp import FastMCP
+from rest_client import RestClient, AuthMode
 
 mcp = FastMCP("docker-mcp", stateless_http=True)
 app = mcp.streamable_http_app()
+
+base_url = os.getenv("API_BASE_URL", "http://localhost:52773/csp/mcp")
 
 # Define a simple function called 'add' to be used with the MCP
 @mcp.tool()
@@ -16,7 +19,18 @@ def add(a: int, b: int) -> int:
 @mcp.tool()
 def iris_version():
     """Return the IRIS Instance version"""
-    return iris.system.Version.GetVersion()
+    #return iris.system.Version.GetVersion()
+
+    with RestClient(
+        base_url=base_url,
+        auth_mode=AuthMode.NONE
+    ) as client:
+        try:
+            # Appel à une API publique
+            response = client.get("/irisversion")
+            return response
+        except Exception as e:
+            return e
 
 if __name__ == "__main__":
     if os.getenv("RUNNING_IN_PRODUCTION"):
@@ -31,4 +45,3 @@ if __name__ == "__main__":
     else:
         # Development mode with a single worker for easier debugging
         uvicorn.run("server:app", host="0.0.0.0", port=8080, reload=True)
-
